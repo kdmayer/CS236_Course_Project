@@ -1,0 +1,11 @@
+*.csv
+*.ipynb_checkpoints
+*.idea
+*.tar
+*.pt
+*.gz
+*.DS_Store
+*__pycache__
+*.joblib
+
+/data/*
