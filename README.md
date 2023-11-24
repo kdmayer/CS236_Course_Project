@@ -57,7 +57,7 @@ git push
 
 4. Connect to your VM with:
 
-    ```ssh -i "cs236-key.pem" ubuntu@ec2-3-19-66-237.us-east-2.compute.amazonaws.com```
+    ```ssh -i "cs236-key.pem" ubuntu@ec2-13-58-249-37.us-east-2.compute.amazonaws.com```
 
 ### Google Cloud Platform
 
