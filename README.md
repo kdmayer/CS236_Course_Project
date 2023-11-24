@@ -1,6 +1,6 @@
 ### Running this repository
 
-If someone else clones your repository, they need to initialize and update the submodules:
+If you clone this repository for the first time, you need to initialize and update the submodules:
 
 ```
 git clone git@github.com:kdmayer/CS236_Course_Project.git
@@ -45,14 +45,15 @@ git commit -m "Update submodule to latest commit"
 git push
 ```
 
+### Connect to AWS
+
+Navigate to your aws_key folder to connect to your VM with:
+
+```ssh -i "cs236-key.pem" ubuntu@ec2-3-19-66-237.us-east-2.compute.amazonaws.com```
+
 ### Google Cloud Platform
 
 To identify available machines on Google Cloud Platform, run the following command:
 
 ```cloud compute machine-types list --filter="us-west1-b" | grep gpu```
 
-### AWS
-
-Navigate to your aws_key folder to connect to your VM with:
-
-```ssh -i "cs236-key.pem" ubuntu@ec2-3-19-66-237.us-east-2.compute.amazonaws.com```
