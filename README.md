@@ -3,7 +3,7 @@
 If you clone this repository for the first time, you need to initialize and update the submodules:
 
 ```
-git clone git@github.com:kdmayer/CS236_Course_Project.git
+git clone https://github.com/kdmayer/CS236_Course_Project.git
 cd CS236_Course_Project
 git submodule update --init --recursive
 ```
@@ -47,9 +47,17 @@ git push
 
 ### Connect to AWS
 
-Navigate to your aws_key folder to connect to your VM with:
+1. Open an SSH client.
 
-```ssh -i "cs236-key.pem" ubuntu@ec2-3-19-66-237.us-east-2.compute.amazonaws.com```
+2. Locate your private key file. The key used to launch this instance is cs236-key.pem
+
+3. Run this command, if necessary, to ensure your key is not publicly viewable.
+
+    ```chmod 400 cs236-key.pem```
+
+4. Connect to your VM with:
+
+    ```ssh -i "cs236-key.pem" ubuntu@ec2-3-19-66-237.us-east-2.compute.amazonaws.com```
 
 ### Google Cloud Platform
 
