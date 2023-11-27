@@ -84,7 +84,11 @@ Set up threestudio:
    pip install -r requirements.txt
    ```
 
-If your /home/users/kdmayer directory is full, delete the following two files:
+If your /home/users/kdmayer directory is full, check disk space usage with:
+
+    ```du -h --max-depth=2 /home/users/kdmayer | sort -h```
+
+If you need to clear disk space, try the following commands:
    
    ```
    rm -r /home/users/kdmayer/.cache
