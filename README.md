@@ -70,24 +70,16 @@ To identify available machines on Google Cloud Platform, run the following comma
 After cloning the repository as described above, run the following commands:
 
 Request GPU resources: 
+
    ```salloc -p gpu -G 1 --time=2:00:00``` # --mem=64G --gres=gpu:1
 
-Create a virtual conda environment: 
-   ```conda create --name threestudio python=3.9```
+Set up threestudio:
 
-Load cuda: 
-   ```module load cuda```
-
-Load PyTorch: 
-   ```module load pytorch```
-
-Activate the conda environment: 
-   ```conda activate threestudio```
-
-Pip install ninja: 
-   ```pip install ninja```
-
-Install the dependencies: 
-   ```pip install -r requirements.txt```
-
-
+   ```
+      conda create --name threestudio python=3.9
+      module load cuda
+      module load pytorch
+      conda activate threestudio
+      pip install ninja
+      pip install -r requirements.txt
+   ```
