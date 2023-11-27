@@ -76,10 +76,17 @@ Request GPU resources:
 Set up threestudio:
 
    ```
-      conda create --name threestudio python=3.9
-      module load cuda
-      module load pytorch
-      conda activate threestudio
-      pip install ninja
-      pip install -r requirements.txt
+   conda create --name threestudio python=3.9
+   module load cuda
+   module load pytorch
+   conda activate threestudio
+   pip install ninja
+   pip install -r requirements.txt
+   ```
+
+If your /home/users/kdmayer directory is full, delete the following two files:
+   
+   ```
+   rm -r /home/users/kdmayer/.cache
+   rm -r /home/users/kdmayer/.local
    ```
