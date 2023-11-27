@@ -10,6 +10,35 @@ git submodule update --init --recursive
 
 The --recursive option is used to automatically initialize and update submodules during the cloning process.
 
+### Installing threestudio on Sherlock
+
+After cloning the repository as described above, run the following commands:
+
+Request GPU resources: 
+
+   ```salloc -p gpu -G 1 --time=2:00:00``` # --mem=64G --gres=gpu:1
+
+Set up threestudio:
+
+   ```
+   conda create --name 3studio python=3.9
+   conda activate 3studio
+   ml load py-pytorch/2.0.0_py39
+   pip install ninja
+   pip install -r requirements.txt
+   ```
+
+If your /home/users/kdmayer directory is full, check disk space usage with:
+
+   ```du -h --max-depth=1 /home/users/kdmayer | sort -h```
+
+If you need to clear disk space, try the following commands:
+   
+   ```
+   rm -r /home/users/kdmayer/.cache
+   rm -r /home/users/kdmayer/.local
+   ```
+
 ### Adding a submodule
 
 Use the following command to add a submodule to your repository:
@@ -64,33 +93,3 @@ git push
 To identify available machines on Google Cloud Platform, run the following command:
 
 ```cloud compute machine-types list --filter="us-west1-b" | grep gpu```
-
-### Installing threestudio on Sherlock
-
-After cloning the repository as described above, run the following commands:
-
-Request GPU resources: 
-
-   ```salloc -p gpu -G 1 --time=2:00:00``` # --mem=64G --gres=gpu:1
-
-Set up threestudio:
-
-   ```
-   conda create --name threestudio python=3.9
-   module load cuda
-   module load pytorch
-   conda activate threestudio
-   pip install ninja
-   pip install -r requirements.txt
-   ```
-
-If your /home/users/kdmayer directory is full, check disk space usage with:
-
-   ```du -h --max-depth=1 /home/users/kdmayer | sort -h```
-
-If you need to clear disk space, try the following commands:
-   
-   ```
-   rm -r /home/users/kdmayer/.cache
-   rm -r /home/users/kdmayer/.local
-   ```
