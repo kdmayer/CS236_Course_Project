@@ -57,11 +57,37 @@ git push
 
 4. Connect to your VM with:
 
-    ```ssh -i "cs236-key.pem" ubuntu@ec2-3-143-115-88.us-east-2.compute.amazonaws.com```
+    ```ssh -i "cs236-key.pem" ubuntu@ec2-18-219-102-90.us-east-2.compute.amazonaws.com```
 
 ### Google Cloud Platform
 
 To identify available machines on Google Cloud Platform, run the following command:
 
 ```cloud compute machine-types list --filter="us-west1-b" | grep gpu```
+
+### Installing threestudio on Sherlock
+
+After cloning the repository as described above, run the following commands:
+
+Request GPU resources: 
+   ```salloc -p gpu -G 1 --time=2:00:00``` # --mem=64G --gres=gpu:1
+
+Create a virtual conda environment: 
+   ```conda create --name threestudio python=3.9```
+
+Load cuda: 
+   ```module load cuda```
+
+Load PyTorch: 
+   ```module load pytorch```
+
+Activate the conda environment: 
+   ```conda activate threestudio```
+
+Pip install ninja: 
+   ```pip install ninja```
+
+Install the dependencies: 
+   ```pip install -r requirements.txt```
+
 
