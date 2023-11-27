@@ -86,7 +86,7 @@ Set up threestudio:
 
 If your /home/users/kdmayer directory is full, check disk space usage with:
 
-    ```du -h --max-depth=2 /home/users/kdmayer | sort -h```
+   ```du -h --max-depth=1 /home/users/kdmayer | sort -h```
 
 If you need to clear disk space, try the following commands:
    
