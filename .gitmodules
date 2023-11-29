@@ -1,3 +1,6 @@
 [submodule "threestudio"]
 	path = threestudio
 	url = https://github.com/threestudio-project/threestudio.git
+[submodule "CS236G_Course_Project"]
+	path = CS236G_Course_Project
+	url = https://github.com/kdmayer/CS236G_Course_Project.git

@@ -16,34 +16,38 @@ After cloning the repository as described above, run the following commands:
 
 Request GPU resources: 
 
-   ```salloc -p gpu -G 1 --time=2:00:00``` # --mem=64G --gres=gpu:1
+```bash
+salloc -p gpu -G 1 --time=2:00:00 # --mem=64G --gres=gpu:1
+``` 
 
 Set up threestudio:
 
-   ```
-   conda create --name 3studio python=3.9
-   conda activate 3studio
-   ml load py-pytorch/2.0.0_py39
-   pip install ninja
-   pip install -r requirements.txt
-   ```
+```bash
+conda create --name 3studio python=3.9
+conda activate 3studio
+ml load py-pytorch/2.0.0_py39
+pip install ninja
+pip install -r requirements.txt
+```
 
 If your /home/users/kdmayer directory is full, check disk space usage with:
 
-   ```du -h --max-depth=1 /home/users/kdmayer | sort -h```
+```bash
+du -h --max-depth=1 /home/users/kdmayer | sort -h
+```
 
 If you need to clear disk space, try the following commands:
    
-   ```
-   rm -r /home/users/kdmayer/.cache
-   rm -r /home/users/kdmayer/.local
-   ```
+```bash
+rm -r /home/users/kdmayer/.cache
+rm -r /home/users/kdmayer/.local
+```
 
 ### Adding a submodule
 
 Use the following command to add a submodule to your repository:
 
-```
+```bash
 git submodule add <repository_url> <subdirectory>
 ```
 
@@ -51,13 +55,13 @@ Replace <repository_url> with the URL of the GitHub repository you want to add a
 
 For example:
 
-```
+```bash
 git submodule add https://github.com/guochengqian/Magic123.git Magic123
 ```
 
 After adding the submodule, you need to commit the changes to your repository:
 
-```
+```bash
 git add .
 git commit -m "Add submodule: repo"
 git push
@@ -67,7 +71,7 @@ git push
 
 If the submodule repository is updated and you want to pull in the changes in your main repository, use the following commands:
 
-```
+```bash
 git submodule update --remote
 git add .
 git commit -m "Update submodule to latest commit"
@@ -82,14 +86,20 @@ git push
 
 3. Run this command, if necessary, to ensure your key is not publicly viewable.
 
-    ```chmod 400 cs236-key.pem```
+```bash
+chmod 400 cs236-key.pem
+```
 
 4. Connect to your VM with:
 
-    ```ssh -i "cs236-key.pem" ubuntu@ec2-18-219-102-90.us-east-2.compute.amazonaws.com```
+```bash
+ssh -i "cs236-key.pem" ubuntu@ec2-18-219-102-90.us-east-2.compute.amazonaws.com
+```
 
 ### Google Cloud Platform
 
 To identify available machines on Google Cloud Platform, run the following command:
 
-```cloud compute machine-types list --filter="us-west1-b" | grep gpu```
+```bash
+cloud compute machine-types list --filter="us-west1-b" | grep gpu
+```
