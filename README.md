@@ -2,46 +2,13 @@
 
 If you clone this repository for the first time, you need to initialize and update the submodules:
 
-```
+``` bash
 git clone https://github.com/kdmayer/CS236_Course_Project.git
 cd CS236_Course_Project
 git submodule update --init --recursive
 ```
 
 The --recursive option is used to automatically initialize and update submodules during the cloning process.
-
-### Installing threestudio on Sherlock
-
-After cloning the repository as described above, run the following commands:
-
-Request GPU resources: 
-
-```bash
-salloc -p gpu -G 1 --time=2:00:00 # --mem=64G --gres=gpu:1
-``` 
-
-Set up threestudio:
-
-```bash
-conda create --name 3studio python=3.9
-conda activate 3studio
-ml load py-pytorch/2.0.0_py39
-pip install ninja
-pip install -r requirements.txt
-```
-
-If your /home/users/kdmayer directory is full, check disk space usage with:
-
-```bash
-du -h --max-depth=1 /home/users/kdmayer | sort -h
-```
-
-If you need to clear disk space, try the following commands:
-   
-```bash
-rm -r /home/users/kdmayer/.cache
-rm -r /home/users/kdmayer/.local
-```
 
 ### Adding a submodule
 
@@ -76,6 +43,41 @@ git submodule update --remote
 git add .
 git commit -m "Update submodule to latest commit"
 git push
+```
+
+## Tips from previous iterations of the project
+
+### Installing threestudio on Sherlock
+
+After cloning the repository as described above, run the following commands:
+
+Request GPU resources: 
+
+```bash
+salloc -p gpu -G 1 --time=2:00:00 # --mem=64G --gres=gpu:1
+``` 
+
+Set up threestudio:
+
+```bash
+conda create --name 3studio python=3.9
+conda activate 3studio
+ml load py-pytorch/2.0.0_py39
+pip install ninja
+pip install -r requirements.txt
+```
+
+If your /home/users/kdmayer directory is full, check disk space usage with:
+
+```bash
+du -h --max-depth=1 /home/users/kdmayer | sort -h
+```
+
+If you need to clear disk space, try the following commands:
+   
+```bash
+rm -r /home/users/kdmayer/.cache
+rm -r /home/users/kdmayer/.local
 ```
 
 ### Connect to AWS

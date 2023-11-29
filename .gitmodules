@@ -4,3 +4,6 @@
 [submodule "CS236G_Course_Project"]
 	path = CS236G_Course_Project
 	url = https://github.com/kdmayer/CS236G_Course_Project.git
+[submodule "Pointer_Outdoor"]
+	path = Pointer_Outdoor
+	url = https://github.com/kdmayer/PointER_Outdoor.git
