@@ -1,12 +1,20 @@
 *.csv
-*.ipynb_checkpoints
-*.idea
 *.tar
 *.pt
 *.gz
 *.DS_Store
 *__pycache__
 *.joblib
+*__pycache__
+*.swp
+*.pth
 
-/data/*
-/aws_key/*
+*.ipynb_checkpoints
+*.idea
+wandb/
+checkpoints/
+/data/
+/experimentation/.ipynb_checkpoints/
+/aws_key/
+
+

@@ -1,109 +1,37 @@
-## OUTDATED README
+# CS236G_Course_Project
 
-### Running this repository
+After cloning the repository, set up the environment by executing
 
-If you clone this repository for the first time, you need to initialize and update the submodules:
+    conda env create -f cs236_project.yml
+    conda activate cs236g_course_project
 
-``` bash
-git clone https://github.com/kdmayer/CS236_Course_Project.git
-cd CS236_Course_Project
-git submodule update --init --recursive
-```
-
-The --recursive option is used to automatically initialize and update submodules during the cloning process.
-
-### Adding a submodule
-
-Use the following command to add a submodule to your repository:
+If this doesn't work, make sure that you have conda 4.12.0/4.13.0 installed and install packages manually by testing 
 
 ```bash
-git submodule add <repository_url> <subdirectory>
+python3 train_gan_model.py
 ```
 
-Replace <repository_url> with the URL of the GitHub repository you want to add as a submodule, and <subdirectory> with the path where you want the submodule to be placed within your repository.
-
-For example:
+and installing the missing packages with pip install <package_name>==<version>. On the sherlock cluster, this translates to the following steps:
 
 ```bash
-git submodule add https://github.com/guochengqian/Magic123.git Magic123
+conda create -n cs236 python=3.6
+conda activate cs236
+pip install torch==1.10.2 --no-cache-dir
+pip install click
 ```
 
-After adding the submodule, you need to commit the changes to your repository:
+Then, execute
 
-```bash
-git add .
-git commit -m "Add submodule: repo"
-git push
-```
+    python3 train_gan_model.py
+  
+to run the code in the repo and train the model for point cloud generation.
 
-### Updating submodules
+After training is complete, you can execute
 
-If the submodule repository is updated and you want to pull in the changes in your main repository, use the following commands:
+    python3 test_gan_model.py
 
-```bash
-git submodule update --remote
-git add .
-git commit -m "Update submodule to latest commit"
-git push
-```
-
-## Tips from previous iterations of the project
-
-### Installing threestudio on Sherlock
-
-After cloning the repository as described above, run the following commands:
-
-Request GPU resources: 
-
-```bash
-salloc -p gpu -G 1 --time=2:00:00 # --mem=64G --gres=gpu:1
-``` 
-
-Set up threestudio:
-
-```bash
-conda create --name 3studio python=3.9
-conda activate 3studio
-ml load py-pytorch/2.0.0_py39
-pip install ninja
-pip install -r requirements.txt
-```
-
-If your /home/users/kdmayer directory is full, check disk space usage with:
-
-```bash
-du -h --max-depth=1 /home/users/kdmayer | sort -h
-```
-
-If you need to clear disk space, try the following commands:
-   
-```bash
-rm -r /home/users/kdmayer/.cache
-rm -r /home/users/kdmayer/.local
-```
-
-### Connect to AWS
-
-1. Open an SSH client.
-
-2. Locate your private key file. The key used to launch this instance is cs236-key.pem
-
-3. Run this command, if necessary, to ensure your key is not publicly viewable.
-
-```bash
-chmod 400 cs236-key.pem
-```
-
-4. Connect to your VM with:
-
-```bash
-ssh -i "cs236-key.pem" ubuntu@ec2-18-219-102-90.us-east-2.compute.amazonaws.com
-```
-
-### Google Cloud Platform
-
-To identify available machines on Google Cloud Platform, run the following command:
-
-```bash
-cloud compute machine-types list --filter="us-west1-b" | grep gpu
-```
+to test your code.
+  
+The code builds on top of the provided default project. The configuration of parameters, e.g. the batch size, the 
+number of epochs, or the loss function, has to be provided at the beginning of the train_gan_model.py and 
+test_gan_model.py file, respectively. 
