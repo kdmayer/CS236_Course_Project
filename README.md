@@ -18,6 +18,7 @@ conda create -n cs236 python=3.6
 conda activate cs236
 pip install torch==1.10.2 --no-cache-dir
 pip install click
+pip install geomloss
 ```
 
 Then, execute
