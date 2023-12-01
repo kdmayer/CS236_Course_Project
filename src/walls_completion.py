@@ -19,7 +19,9 @@ def get_best_planes(point_cloud: np.ndarray):
 
     for n_clusters in range(2, 10):
         z_coords = point_cloud[:, 2].reshape(-1, 1)
-        kmeans = KMeans(n_clusters=n_clusters, random_state=0, n_init="auto").fit(
+        # Convert n_clusters to an integer
+        n_clusters = int(n_clusters)
+        kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(
             z_coords
         )
 
