@@ -1,3 +1,5 @@
+*.ipynb_checkpoints
+*.idea
 *.csv
 *.tar
 *.pt
@@ -5,17 +7,17 @@
 *.DS_Store
 *__pycache__
 *.joblib
-*__pycache__
 *.swp
 *.pth
 *.npy
 
-*.ipynb_checkpoints
-*.idea
 wandb/
 checkpoints/
 /data/
 /experimentation/.ipynb_checkpoints/
 /aws_key/
+/E06000014_npy_normalized/
+/E06000014_npy_raw/
+
 
 
