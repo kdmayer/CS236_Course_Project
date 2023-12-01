@@ -1,5 +1,7 @@
 # CS236G_Course_Project
 
+### Setup
+
 After cloning the repository, set up the environment by executing
 
     conda env create -f cs236_project.yml
@@ -21,7 +23,9 @@ pip install click
 pip install geomloss
 ```
 
-Then, execute
+### Usage Instructions
+
+Execute
 
     python3 train_gan_model.py
   
@@ -32,7 +36,19 @@ After training is complete, you can execute
     python3 test_gan_model.py
 
 to test your code.
+
+### Project Idea
+
+- For this project, we will focus on modifying the code in trainer._train_step_g() to contain a number of different loss functions.
+- Once the generator is trained, we will generate a number of point clouds and fit Axel's hyperplane model to them to visualize the generated output
+- Lastly, we will explore the latent space of the generator by interpolating between points in the latent space and visualizing the intermediate point clouds
   
+### Acknowledgements
+
 The code builds on top of the provided default project. The configuration of parameters, e.g. the batch size, the 
 number of epochs, or the loss function, has to be provided at the beginning of the train_gan_model.py and 
 test_gan_model.py file, respectively. 
+
+For reference, the original repo is available here: https://github.com/jacklyonlee/default-project
+
+ 
