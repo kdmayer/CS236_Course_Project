@@ -29,3 +29,25 @@ def plot_samples(samples, num=8, rows=2, cols=4):
         )
     fig.update_layout(showlegend=False)
     return fig
+
+def normalize_pc(point_cloud):
+
+    # Find the range for each axis and then the max range
+    mins = np.min(point_cloud, axis=0)
+    maxs = np.max(point_cloud, axis=0)
+    ranges = maxs - mins
+    max_range = np.max(ranges)
+
+    # Handle the case where max range is 0 (to prevent division by zero)
+    if max_range == 0:
+        raise ValueError("Point cloud has zero range.")
+
+    # Normalize the point cloud using the same scale for all axes and then
+    # shift to [-1, 1]
+    pc_normalized = 2 * (point_cloud - mins) / max_range - 1
+
+    # Now we want everything to fit in -1,1, but without touching these bounds.
+    pc_normalized = pc_normalized * 0.999
+    pc_normalized = pc_normalized.astype(np.float32)
+
+    return pc_normalized

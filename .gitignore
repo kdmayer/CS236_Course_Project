@@ -8,6 +8,7 @@
 *__pycache__
 *.swp
 *.pth
+*.npy
 
 *.ipynb_checkpoints
 *.idea
