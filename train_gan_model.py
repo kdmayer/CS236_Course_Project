@@ -12,18 +12,18 @@ root_dir = "./"
 data_dir = os.path.join("./mock_data")
 ckpt_dir = os.path.join(root_dir, "checkpoints")
 # Name of current experiment. Checkpoints will be stored in '{ckpt_dir}/{name}/'.
-name_of_run = "experiment_X"
+name_of_run = "experiment"
 # Choose from "sinkhorn", "energy", or "gaussian". If None, then only the Chamfer Distance will be used.
 generator_loss = "sinkhorn"
 # Manual seed for reproducibility.
 seed = 0
 # Resumes training using the last checkpoint in ckpt_dir.
 resume = False
-batch_size = 2
+batch_size = 32
 # Number of points sampled from each training sample.
-tr_sample_size = 10
+tr_sample_size = 500
 # Number of points sampled from each testing sample.
-te_sample_size = 10
+te_sample_size = 500
 # Total training epoch.
 max_epoch = 2000
 # Number of discriminator updates before a generator update.

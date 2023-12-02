@@ -96,13 +96,18 @@ class Trainer:
         loss_hinge = -discriminator_output.mean()
         loss_cd = compute_cd(generated_point_cloud, real_point_cloud, reduce_func=torch.sum).mean()
 
-        # TODO: Modify the loss computation to take into account a combination of different losses?
-        if ("cuda" in self.device) and (self.generator_loss_type in ["sinkhorn", "energy", "gaussian"]):
+        # TODO: Custom loss functions
+        if ("cuda" in self.device) and len(self.generator_loss_type) != 0:
+
             import geomloss
-            # Define loss between sampled measures
-            loss = geomloss.SamplesLoss(loss="gaussian", p=2, blur=.05)
-            geom_loss = loss(generated_point_cloud, real_point_cloud)
-            mean_geom_loss = geom_loss.mean() # average loss_sinkhorn over all elements in the batch
+            mean_geom_loss = 0
+            for loss_type in self.generator_loss_type:
+                assert loss_type in ["sinkhorn", "energy", "gaussian", "laplacian"]
+                loss = geomloss.SamplesLoss(loss=loss_type, p=2, blur=.05)
+                geom_loss = loss(generated_point_cloud, real_point_cloud)
+                # Average loss over all elements in the batch
+                mean_geom_loss += geom_loss.mean()
+            mean_geom_loss /= len(self.generator_loss_type)
             return loss_hinge + loss_cd + mean_geom_loss
 
         return loss_hinge + loss_cd
