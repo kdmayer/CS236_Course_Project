@@ -34,7 +34,7 @@ def main(generator_loss, input_dir):
     else:
         name_of_loss = "_".join(generator_loss)
 
-    name_of_run = str(name_of_loss) + str(time_of_run)
+    name_of_run = str(name_of_loss) + "_" + str(time_of_run)
     # Manual seed for reproducibility.
     seed = 0
     # Resumes training using the last checkpoint in ckpt_dir.
