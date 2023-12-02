@@ -11,19 +11,30 @@ from datetime import datetime
 
 
 @click.command()
-@click.option('--generator_loss', '-l', nargs=-1, type=str, default=None, help='Can contain the full set or any subset of "sinkhorn", "energy", "gaussian", "laplacian". If None, only the Chamfer Distance will be used.')
-@click.option('--input_dir', '-i', type=str, default="mock_data", help="Must be either mock_data or data")
+@click.option('--generator_loss', '-l', multiple=True, default=None, help='Can contain the full set or any subset of "sinkhorn", "energy", "gaussian", "laplacian". If None, only the Chamfer Distance will be used.')
+@click.option('--input_dir', '-i', type=str, default="mock_data")
 def main(generator_loss, input_dir):
 
+    # Convert tuple to list
+    generator_loss = list(generator_loss)
+
+    # Logging
     print(f"Using {input_dir} as input directory")
     print(f"Using {generator_loss} as generator loss")
+
     # Configuration
     root_dir = "./"
     data_dir = os.path.join(f"./{input_dir}")
     ckpt_dir = os.path.join(root_dir, "checkpoints")
     # Name of current experiment. Checkpoints will be stored in '{ckpt_dir}/{name}/'.
     time_of_run = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    name_of_run = str(generator_loss) + str(time_of_run)
+    # Name of additional loss function(s) used by the generator.
+    if len(generator_loss) == 0:
+        name_of_loss = "None"
+    else:
+        name_of_loss = "_".join(generator_loss)
+
+    name_of_run = str(name_of_loss) + str(time_of_run)
     # Manual seed for reproducibility.
     seed = 0
     # Resumes training using the last checkpoint in ckpt_dir.
