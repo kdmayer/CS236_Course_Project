@@ -7,6 +7,8 @@ from src.trainer import Trainer
 from src.metrics import *
 from src.utils import *
 
+from datetime import datetime
+
 
 @click.command()
 @click.option('--generator_loss', '-l', nargs=-1, type=str, default=None, help='Can contain the full set or any subset of "sinkhorn", "energy", "gaussian", "laplacian". If None, only the Chamfer Distance will be used.')
@@ -20,7 +22,8 @@ def main(generator_loss, input_dir):
     data_dir = os.path.join(f"./{input_dir}")
     ckpt_dir = os.path.join(root_dir, "checkpoints")
     # Name of current experiment. Checkpoints will be stored in '{ckpt_dir}/{name}/'.
-    name_of_run = str(generator_loss)
+    time_of_run = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    name_of_run = str(generator_loss) + str(time_of_run)
     # Manual seed for reproducibility.
     seed = 0
     # Resumes training using the last checkpoint in ckpt_dir.
