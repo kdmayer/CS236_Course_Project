@@ -27,15 +27,29 @@ pip install geomloss
 
 Execute
 
-    python3 train_gan_model.py
+    python3 train_gan_model.py -l sinkhorn -l energy -l gaussian -l laplacian --input_dir data
   
-to run the code in the repo and train the model for point cloud generation.
+to run the code on your local machine and train the model for point cloud generation.
+
+If you are on the sherlock cluster, you can run the code with the following command:
+
+```bash
+sbatch train_gan_model.sh
+```
 
 After training is complete, you can execute
 
     python3 test_gan_model.py
 
 to test your code.
+
+### Model Checkpoints
+
+To copy back a trained model checkpoint from sherlock, run the following command from the project's root:
+
+```bash
+scp -r kdmayer@sherlock.stanford.edu:/home/groups/fischer/CS236_Course_Project/checkpoints/<checkpoint_name> checkpoints/
+```
 
 ### Project Idea
 
