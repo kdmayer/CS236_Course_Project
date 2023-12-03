@@ -92,6 +92,7 @@ class Decoder(nn.Module):
         Returns
         -------
         """
+
         super().__init__()
         # Linear layer maps latent space vector to h_dim
         self.fc = nn.Linear(z1_dim, h_dim)
@@ -131,6 +132,22 @@ class Decoder(nn.Module):
         # x is the result of element-wise addition of the mapped latent vector and the mapped
         # noise vector, by default results in a tensor of shape [B x 1000 x 512]
         x = self.fc(z1) + self.fu(z2)
+        o = self.dec(x)
+        return o
+
+    def latent_to_point_cloud(self, z1):
+        """
+        Parameters
+        ----------
+        z1: torch.Tensor
+        Latent vector which represents encoded point cloud in the form [B x 1 x 256]
+
+        Returns
+        -------
+        o: torch.Tensor
+        Generated output points represented as a tensor of shape [B x 1000 x 3]
+        """
+        x = self.fc(z1)
         o = self.dec(x)
         return o
 
@@ -195,6 +212,9 @@ class Generator(nn.Module):
         # z2 is the random noise which is later added to the encoded point cloud vector z1
         z2 = torch.randn((B, N, self.z2_dim)).to(device)
         # Calls the forward function of the decoder network
+        # TODO: self.decoder_network() takes in the encoded point cloud vector z1 and the random noise vector z2.
+        # TODO: Returns a generated point cloud of shape [B x 1000 x 3]
+        # TODO: Think about how we can increase the number of generated points.
         generated_point_cloud = self.decoder_network(z1, z2)
         return generated_point_cloud
 
@@ -215,6 +235,8 @@ class Generator(nn.Module):
         Encoded point cloud in the latent space with dimension [B x 1 x 256]
         """
         z1 = self.encode(real_point_cloud)
+        # TODO: self.decode() takes in the encoded point cloud vector z1 and returns a generated point cloud of shape [B x 1000 x 3]
+        # TODO: Think about how we can increase the number of generated points.
         generated_point_cloud = self.decode(z1, real_point_cloud.size(0), real_point_cloud.size(1), real_point_cloud.device)
         return generated_point_cloud, z1
 

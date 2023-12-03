@@ -88,7 +88,7 @@ class Trainer:
             assert ckpt_paths, "No checkpoints found."
             ckpt_path = sorted(ckpt_paths, key=lambda f: int(f[:-4]))[-1]
             ckpt_path = os.path.join(self.ckpt_dir, ckpt_path)
-        self._load_state_dict(torch.load(ckpt_path))
+        self._load_state_dict(torch.load(ckpt_path, map_location=self.device))
 
     def _train_step_g(self, real_point_cloud):
         generated_point_cloud, z1 = self.net_g(real_point_cloud)
