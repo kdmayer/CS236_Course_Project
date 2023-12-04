@@ -1,6 +1,6 @@
 # CS236G_Course_Project
 
-### ProTip:
+### Tip:
 
 Convert .obj file to point cloud (here .las) with CloudCompare
 
