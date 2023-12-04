@@ -1,5 +1,13 @@
 # CS236G_Course_Project
 
+### ProTip:
+
+Convert .obj file to point cloud (here .las) with CloudCompare
+
+```bash
+open -a CloudCompare.app --args -O /users/kevin/desktop/example.obj -C_EXPORT_FMT LAS -SAMPLE_MESH POINTS 10000
+```
+
 ### Setup
 
 After cloning the repository, set up the environment by executing
