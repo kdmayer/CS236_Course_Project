@@ -8,6 +8,14 @@ Convert .obj file to point cloud (here .las) with CloudCompare
 open -a CloudCompare.app --args -O /users/kevin/desktop/example.obj -C_EXPORT_FMT LAS -SAMPLE_MESH POINTS 10000
 ```
 
+Convert .ply point cloud file to mesh (here .obj) with CloudCompare (Throws a Triangulation error?!)
+
+```bash
+open -a CloudCompare.app --args -O /Users/kevin/Projects/CS236_Course_Project/mock_data/Interpolation_Output/0.ply -M_EXPORT_FMT OBJ -DELAUNAY 
+```
+
+Online viewer for .ply point cloud files at https://point.love/
+
 ### Setup
 
 After cloning the repository, set up the environment by executing
