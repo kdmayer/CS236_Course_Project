@@ -7,12 +7,12 @@ from src.trainer import Trainer
 from src.dataset import Lidar
 
 root_dir = "."
-data_dir = os.path.join(root_dir, "mock_data")
-ckpt_path = os.path.join(root_dir, "checkpoints", "experiment_X", "300.pth")
+data_dir = os.path.join(root_dir, "data")
+ckpt_path = os.path.join(root_dir, "checkpoints", "sinkhorn_energy_gaussian_laplacian_2023-12-02_14-11-58", "100.pth")
 seed = 0
 split="Test"
 # Number of points sampled from each training sample.
-sample_size = 1000
+sample_size = 500
 batch_size = 8
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
