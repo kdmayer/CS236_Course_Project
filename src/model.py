@@ -135,22 +135,6 @@ class Decoder(nn.Module):
         o = self.dec(x)
         return o
 
-    def latent_to_point_cloud(self, z1):
-        """
-        Parameters
-        ----------
-        z1: torch.Tensor
-        Latent vector which represents encoded point cloud in the form [B x 1 x 256]
-
-        Returns
-        -------
-        o: torch.Tensor
-        Generated output points represented as a tensor of shape [B x 1000 x 3]
-        """
-        x = self.fc(z1)
-        o = self.dec(x)
-        return o
-
 class Generator(nn.Module):
     """
     The Generator takes in a point cloud, encodes it into a latent space, adds random normal noise, and then creates
@@ -193,7 +177,7 @@ class Generator(nn.Module):
         z1 = self.encoder_network(real_point_cloud).unsqueeze(dim=1)
         return z1
 
-    def decode(self, z1, B, N, device):
+    def decode(self, z1, B, N, device, interpolating=False):
         """
         Parameters
         ----------
@@ -210,7 +194,13 @@ class Generator(nn.Module):
         Generated point cloud of dimension [B x 1000 x 3]
         """
         # z2 is the random noise which is later added to the encoded point cloud vector z1
-        z2 = torch.randn((B, N, self.z2_dim)).to(device)
+        if interpolating:
+            g_cpu = torch.Generator()
+            g_cpu.manual_seed(42)
+            print(f"INTERPOLATION MODE")
+            z2 = torch.randn((B, N, self.z2_dim), generator=g_cpu).to(device)
+        else:
+            z2 = torch.randn(B, N, self.z2_dim).to(device)
         # Calls the forward function of the decoder network
         # TODO: self.decoder_network() takes in the encoded point cloud vector z1 and the random noise vector z2.
         # TODO: Returns a generated point cloud of shape [B x 1000 x 3]
