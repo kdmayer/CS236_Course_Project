@@ -8,7 +8,7 @@ from src.dataset import Lidar
 
 root_dir = "."
 data_dir = os.path.join(root_dir, "data")
-ckpt_path = os.path.join(root_dir, "checkpoints", "sinkhorn_2023-12-02_14-23-46", "200.pth")
+ckpt_path = os.path.join(root_dir, "checkpoints", "laplacian_2023-12-02_14-23-48", "200.pth")
 seed = 0
 split="Test"
 # Number of points sampled from each training sample.
