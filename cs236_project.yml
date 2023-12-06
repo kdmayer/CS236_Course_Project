@@ -1,4 +1,4 @@
-name: cs236g_course_project
+name: cs236_course_project
 channels:
   - defaults
 dependencies:
@@ -53,4 +53,4 @@ dependencies:
     - wandb==0.12.11
     - yaspin==2.1.0
     - zipp==3.6.0
-prefix: /usr/local/anaconda3/envs/cs236g_course_project
+prefix: /usr/local/anaconda3/envs/cs236_course_project

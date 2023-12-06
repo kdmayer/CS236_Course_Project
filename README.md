@@ -1,6 +1,6 @@
 # CS236G_Course_Project
 
-### Tip:
+### Tips:
 
 Convert .obj file to point cloud (here .las) with CloudCompare
 
@@ -16,12 +16,14 @@ open -a CloudCompare.app --args -O /Users/kevin/Projects/CS236_Course_Project/mo
 
 Online viewer for .ply point cloud files at https://point.love/
 
+Interesting package to look at: https://github.com/fwilliams/point-cloud-utils
+
 ### Setup
 
 After cloning the repository, set up the environment by executing
 
     conda env create -f cs236_project.yml
-    conda activate cs236g_course_project
+    conda activate cs236_course_project
 
 If this doesn't work, make sure that you have conda 4.12.0/4.13.0 installed and install packages manually by testing 
 
