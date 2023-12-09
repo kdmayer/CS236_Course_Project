@@ -1,22 +1,4 @@
-# CS236G_Course_Project
-
-### Tips:
-
-Convert .obj file to point cloud (here .las) with CloudCompare
-
-```bash
-open -a CloudCompare.app --args -O /users/kevin/desktop/example.obj -C_EXPORT_FMT LAS -SAMPLE_MESH POINTS 10000
-```
-
-Convert .ply point cloud file to mesh (here .obj) with CloudCompare (Throws a Triangulation error?!)
-
-```bash
-open -a CloudCompare.app --args -O /Users/kevin/Projects/CS236_Course_Project/mock_data/Interpolation_Output/0.ply -M_EXPORT_FMT OBJ -DELAUNAY 
-```
-
-Online viewer for .ply point cloud files at https://point.love/
-
-Interesting package to look at: https://github.com/fwilliams/point-cloud-utils
+# CS236_Course_Project
 
 ### Setup
 
@@ -69,18 +51,26 @@ To copy back a trained model checkpoint from sherlock, run the following command
 scp -r kdmayer@sherlock.stanford.edu:/home/groups/fischer/CS236_Course_Project/checkpoints/<checkpoint_name> checkpoints/
 ```
 
-### Project Idea
-
-- For this project, we will focus on modifying the code in trainer._train_step_g() to contain a number of different loss functions.
-- Once the generator is trained, we will generate a number of point clouds and fit Axel's hyperplane model to them to visualize the generated output
-- Lastly, we will explore the latent space of the generator by interpolating between points in the latent space and visualizing the intermediate point clouds
-  
 ### Acknowledgements
+ 
+This repository builds upon the Point Cloud GAN implementation: https://github.com/jacklyonlee/default-project
 
-The code builds on top of the provided default project. The configuration of parameters, e.g. the batch size, the 
-number of epochs, or the loss function, has to be provided at the beginning of the train_gan_model.py and 
-test_gan_model.py file, respectively. 
+### Tips:
 
-For reference, the original repo is available here: https://github.com/jacklyonlee/default-project
+Convert .obj file to point cloud (here .las) with CloudCompare
+
+```bash
+open -a CloudCompare.app --args -O /users/kevin/desktop/example.obj -C_EXPORT_FMT LAS -SAMPLE_MESH POINTS 10000
+```
+
+Convert .ply point cloud file to mesh (here .obj) with CloudCompare (Throws a Triangulation error?!)
+
+```bash
+open -a CloudCompare.app --args -O /Users/kevin/Projects/CS236_Course_Project/mock_data/Interpolation_Output/0.ply -M_EXPORT_FMT OBJ -DELAUNAY 
+```
+
+Online viewer for .ply point cloud files at https://point.love/
+
+Interesting package to look at: https://github.com/fwilliams/point-cloud-utils
 
  
