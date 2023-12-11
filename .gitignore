@@ -15,6 +15,7 @@ wandb/
 checkpoints/
 /data/
 /experimentation/.ipynb_checkpoints/
+/experimentation/outdated/
 /aws_key/
 /E06000014_npy_normalized/
 /E06000014_npy_raw/
